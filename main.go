@@ -18,8 +18,10 @@ func main() {
 	//http.Handle("/", http.FileServer(http.Dir("./static")))
 	//http.ListenAndServe(":8088", nil)
 
-	question := "How are you"
+	input := "My name is Kamila"
+	//input2 := "Hello how are you?"
 
-	fmt.Println(eliza.Ask(question))
+	fmt.Println(eliza.Ask(input))
+	//fmt.Println(eliza.Ask(input2))
 
 } //End of function main
