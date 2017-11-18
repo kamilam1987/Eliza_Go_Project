@@ -3,9 +3,11 @@ package eliza
 import (
 	"bufio"
 	"fmt"
+	"math/rand"
 	"os"
 	"regexp"
 	"strings"
+	"time"
 )
 
 //Creates new strucr
@@ -28,7 +30,31 @@ func Response(patterns string, answers []string) Eliza_Response {
 
 //Function Ask compares user input if matches witch patterns
 func Ask(userInput string) string {
-	//This is one of the patern for testing purpose
+
+	allPatterns := docPatterns()
+
+	//Looping true all patterns and checks if a match is found
+	for _, elizaPattern := range allPatterns {
+
+		//Code adapted from: https://golang.org/pkg/regexp/#example_Regexp_MatchString
+		if elizaPattern.re.MatchString(userInput) {
+			//Code adapted from: https://golang.org/pkg/regexp/#example_Regexp_FindStringSubmatch
+			match := elizaPattern.re.FindStringSubmatch(userInput)
+			found := match[1]
+			//Reflect function
+			found = Reflect(found)
+			//Takes random pattern
+			formatAnswer := randomAnswer(elizaPattern.answers)
+			//Format string
+			if strings.Contains(formatAnswer, "%s") {
+				formatAnswer = fmt.Sprintf(formatAnswer, found)
+			}
+			return formatAnswer
+
+		}
+
+	} //End of ask function
+	/*//This is one of the patern for testing purpose
 	patters := "name is (.*)"
 	// MustCompile, Compile to make a *regexp.Regexp struct
 	re := regexp.MustCompile(patters)
@@ -55,11 +81,13 @@ func Ask(userInput string) string {
 		fmt.Println("No match found")
 	}
 	return ""
-
-} //End of ask function
+	*/
+	return "Sorry but I don't understand"
+}
 
 //This function builds list of responses
 func docPatterns() []Eliza_Response {
+
 	allResponses := []Eliza_Response{}
 
 	//Code adapted from: Book(An Introdution to Programming in Go p.136)
@@ -88,3 +116,36 @@ func docPatterns() []Eliza_Response {
 	return allResponses
 
 } //End of docPatterns function
+
+func Reflect(input string) string {
+	// Split the input on word boundaries.
+	boundaries := regexp.MustCompile(`\b`)
+	words := boundaries.Split(input, -1)
+
+	// List the reflections.
+	reflections := [][]string{
+		{`I`, `you`},
+		{`me`, `you`},
+		{`you`, `me`},
+		{`my`, `your`},
+		{`your`, `my`},
+	}
+
+	// Loop through each token, reflecting it if there's a match.
+	for i, word := range words {
+		for _, reflection := range reflections {
+			if matched, _ := regexp.MatchString(reflection[0], word); matched {
+				words[i] = reflection[1]
+				break
+			}
+		}
+	}
+
+	// Put the tokens back together.
+	return strings.Join(words, ``)
+}
+func randomAnswer(answers []string) string {
+	rand.Seed(time.Now().UnixNano())
+	i := rand.Intn(len(answers))
+	return answers[i]
+}

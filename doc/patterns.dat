@@ -1,0 +1,8 @@
+hello(.*)
+Hello... I'm glad you could drop by today.;Hi there... how are you today?;Hello, how are you feeling today?
+Hello(.*)
+Hello... I'm glad you could drop by today.;Hi there... how are you today?;Hello, how are you feeling today?
+(.*)
+Please tell me more.;Let's change focus a bit... Tell me about your family.;Why do you say that?; I see.;Very interesting.; How does that make you feel?; How do you feel when you say that?
+name is (.*)
+Hello %s, it's nice to meet you.;It's nice to meet you %s.;%s? That's a funny name.
