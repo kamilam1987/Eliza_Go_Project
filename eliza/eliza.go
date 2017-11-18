@@ -1,8 +1,11 @@
 package eliza
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"regexp"
+	"strings"
 )
 
 //Creates new strucr
@@ -54,3 +57,34 @@ func Ask(userInput string) string {
 	return ""
 
 } //End of ask function
+
+//This function builds list of responses
+func docPatterns() []Eliza_Response {
+	allResponses := []Eliza_Response{}
+
+	//Code adapted from: Book(An Introdution to Programming in Go p.136)
+	file, err := os.Open("./doc/patterns.dat")
+	// handle the error here return
+	if err != nil {
+		//Crash here
+		panic(err)
+	}
+	defer file.Close()
+
+	//Code adapted from :https://gobyexample.com/line-filters
+	//Wrapps the unbuffered file with a buffered scanner and gives a convenient Scan method that advances the scanner to the next token; which is the next line in the default scanner.
+	scanner := bufio.NewScanner(file)
+
+	//Text returns the current token, here the next line, from the input.
+	for scanner.Scan() {
+		pattern := scanner.Text()
+		scanner.Scan()
+		elizaAnswer := scanner.Text()
+		//; is used in patterns.dot to splis list of eliza answers
+		listOfelizaAnswer := strings.Split(elizaAnswer, ";")
+		resp := Response(pattern, listOfelizaAnswer)
+		allResponses = append(allResponses, resp)
+	} //End of for
+	return allResponses
+
+} //End of docPatterns function
