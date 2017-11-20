@@ -7,21 +7,34 @@ package main
 import (
 	//"net/http"
 	"fmt"
+	"net/http"
 
 	"./eliza"
 )
 
 func main() {
-	//code adapted from:https://stackoverflow.com/questions/26559557/how-do-you-serve-a-static-html-file-using-a-go-web-server
-	// FileServe serves index.html from static folder
-	//http.Handle function tells the http package to handle all requests from static folder (index.html)
-	//http.Handle("/", http.FileServer(http.Dir("./static")))
-	//http.ListenAndServe(":8088", nil)
 
-	input := "My name is Kamila"
-	//input2 := "Hello how are you?"
+	http.Handle("/", http.FileServer(http.Dir("./static")))
 
-	fmt.Println(eliza.Ask(input))
-	//fmt.Println(eliza.Ask(input2))
+	http.HandleFunc("/ask", HandleAsk)
+	http.ListenAndServe(":8088", nil)
+}
 
-} //End of function main
+//input := "My name is Kamila"
+//input2 := "Hello how are you?"
+
+//fmt.Println(eliza.Ask(input))
+//fmt.Println(eliza.Ask(input2))
+
+//} //End of function main
+
+func HandleAsk(w http.ResponseWriter, r *http.Request) {
+	// r.URL == "http:/localhost:8080/ask?input=hello"
+	userInput := r.URL.Query().Get("input") // extracts hello
+	// if userInput == ""{
+	// don't respond
+	// }
+	reply := eliza.Ask(userInput)
+	fmt.Fprintf(w, reply)
+
+}
