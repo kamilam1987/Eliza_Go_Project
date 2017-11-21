@@ -17,7 +17,7 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("./static")))
 
 	http.HandleFunc("/ask", HandleAsk)
-	http.ListenAndServe(":8088", nil)
+	http.ListenAndServe(":8081", nil)
 }
 
 //input := "My name is Kamila"

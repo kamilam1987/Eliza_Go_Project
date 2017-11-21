@@ -25,15 +25,14 @@ var greetings = []string{
 	"Hello. How are you feeling today?",
 	"Hi! How are you doing?",
 	"Please tell me what's been bothering you.",
-	"Is something troubling you?",
 }
 
 // Ansvers for exiting .
 var byes = []string{
+	"Goodbye. This was really a nice talk.",
 	"Goodbye. It was nice talking to you.",
 	"Thank you for talking with me.",
-	"Thank you, that will be $150. Have a good day!",
-	"Goodbye. This was really a nice talk.",
+	"Thank you, that will be €150. Have a good day!",
 	"Goodbye. I'm looking forward to our next session.",
 	"This was a good session, wasn't it – but time is over now. Goodbye.",
 	"Maybe we could discuss this over more in our next session? Goodbye.",
@@ -227,6 +226,7 @@ func IsElizaStart(userInput string) bool {
 	return false
 }
 
+//Code adapted from: https://github.com/kennysong/goeliza/blob/master/eliza.go
 // IsQuitStatement returns if the statement is a quit statement
 func IsQuitStatement(userInput string) bool {
 	userInput = preprocess(userInput)
