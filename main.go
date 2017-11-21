@@ -13,9 +13,8 @@ import (
 )
 
 func main() {
-
+	//Code adapted from: http://www.alexedwards.net/blog/serving-static-sites-with-go
 	http.Handle("/", http.FileServer(http.Dir("./static")))
-
 	http.HandleFunc("/ask", HandleAsk)
 	http.ListenAndServe(":8081", nil)
 }
@@ -29,11 +28,8 @@ func main() {
 //} //End of function main
 
 func HandleAsk(w http.ResponseWriter, r *http.Request) {
-	// r.URL == "http:/localhost:8080/ask?input=hello"
+	//Code adapted from: https://siongui.github.io/2017/03/24/go-get-url-query-string-in-http-handler/
 	userInput := r.URL.Query().Get("input") // extracts hello
-	// if userInput == ""{
-	// don't respond
-	// }
 	reply := eliza.Ask(userInput)
 	fmt.Fprintf(w, reply)
 
