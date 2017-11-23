@@ -22,7 +22,7 @@ form.keypress(function(event){
         return;
     }
 
-    list.append("<li>" + text + "</li>");
+    list.append("<li id = 'input'  align='right' class=\"list-group\">" + "You: " + text + "</li class=\"list-group\">");
 
     //Code adapted from: http://api.jquery.com/jquery.ajax/
     //jQuery get request.
@@ -30,9 +30,10 @@ form.keypress(function(event){
          //Sends parameters
         .done(function(elizaPattern){ 
             //Executes the response from server
-            list.append("<li>" + elizaPattern + "</li>");
+            list.append("<li id='output' align='left' class=\"list-group\">" + "Eliza: "+ elizaPattern + "</li class=\"list-group\">");
         }).fail(function(){ 
             // fail runs if there was any error.
             list.append("<li>Sorry!</li>");
         });
+        window.scrollTo(0, document.body.scrollHeight);
 });

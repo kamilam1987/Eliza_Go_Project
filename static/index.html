@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    
     <body>
-        <h1>ELIZA</h1>
-
-        <ul id="list"></ul>
-
-        <form>
-            <input id="form" text="Talk to Eliza"></input>    
-        </form>
-
+        <nav  class = "fixed-nav-bar">
+            <a class="navbar-brand">Eliza Chat</a>
+        </nav>
+        
+        <div class = "container-fluid">
+            <ul id="list" class="list-group"></ul>
+        </div>
+        <div class = "fixed-bottom">
+            <div class="container">
+                <form>
+                    <div class = "form-group">
+                        <input id="form" placeholder="Talk to Eliza ..." ></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
         <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
         <script src="script.js"></script>
     </body>

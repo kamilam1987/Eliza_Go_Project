@@ -16,7 +16,7 @@ func main() {
 	//Code adapted from: http://www.alexedwards.net/blog/serving-static-sites-with-go
 	http.Handle("/", http.FileServer(http.Dir("./static")))
 	http.HandleFunc("/ask", HandleAsk)
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":8082", nil)
 }
 
 //input := "My name is Kamila"

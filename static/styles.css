@@ -1,5 +1,4 @@
 .fixed-nav-bar {
-
     position: fixed;
     top: 0;
     left: 0;
@@ -39,6 +38,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin-bottom: 130px;
+    margin-top: 60px;
 }
 .container {
     padding-left: 15px;
@@ -56,4 +56,5 @@ body {
     bottom: 0px;
     margin-right: auto;
     margin-left: auto;
+   
 }
