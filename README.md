@@ -7,7 +7,7 @@ Go (often referred to as golang) is a programming language created at Google in 
 Please visit this link: https://golang.org/doc/install?download=go1.5.windows-amd64.msi2
 ## How to clone a repository and run programs
 Please visit links: <br />
-htps://help.github.com/articles/cloning-a-repository<br />
+https://help.github.com/articles/cloning-a-repository<br />
 https://github.com/processing/processing/wiki/Build-Instructions
 ### Instruction 
 - Step 1: In command line or terminal type: git clone https://github.com/kamilam1987/Eliza_Go_Project.git
