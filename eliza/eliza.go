@@ -85,10 +85,14 @@ func Ask(userInput string) string {
 
 	allPatterns := docPatterns()
 
+	//If user input matches string from array elizaStarts
 	if IsElizaStart(userInput) {
+		//Eliza returns random string from byes greeting
 		return elizaGreetings()
 	}
+	//If user input matches string from array elizaQuit
 	if IsQuitStatement(userInput) {
+		//Eliza returns random string from byes array
 		return elizaBye()
 	}
 	//Looping true all patterns and checks if a match is found
@@ -104,7 +108,7 @@ func Ask(userInput string) string {
 			//Takes random pattern
 			formatAnswer := randomAnswer(elizaPattern.answers)
 			//Format string
-
+			//Code adapted from: https://gobyexample.com/string-functions
 			if strings.Contains(formatAnswer, "%s") {
 				formatAnswer = fmt.Sprintf(formatAnswer, found)
 			}
@@ -167,7 +171,7 @@ func docPatterns() []Eliza_Response {
 		pattern := scanner.Text()
 		scanner.Scan()
 		elizaAnswer := scanner.Text()
-		//; is used in patterns.dot to splis list of eliza answers
+		//Is used in patterns.dot to splis list of eliza answers
 		listOfelizaAnswer := strings.Split(elizaAnswer, ";")
 		elizaPattern := Response(pattern, listOfelizaAnswer)
 		allResponses = append(allResponses, elizaPattern)
@@ -217,6 +221,7 @@ func Reflect(userInput string) string {
 	return strings.Join(words, ``)
 } //End of Reflect function
 
+//Code adapted from: https://github.com/kennysong/goeliza/blob/master/eliza.go
 //IsElizaStart returns if the statement is a start statement
 func IsElizaStart(userInput string) bool {
 	userInput = preprocess(userInput)
@@ -250,13 +255,16 @@ func preprocess(userInput string) string {
 
 //Function randomAnswer gets random  answers from patterns
 func randomAnswer(answers []string) string {
+	//Code adapted from: https://til.hashrocket.com/posts/355f31f19c-seeding-golangs-rand
 	rand.Seed(time.Now().UnixNano())
+	//Code adapted from: https://play.golang.org/p/ZdFpbahgC1
 	i := rand.Intn(len(answers))
 	return answers[i]
 }
 
 //Function randChoice gets random answers for goodbyes and introductions
 func randChoice(list []string) string {
+	//Code adapted from: https://play.golang.org/p/ZdFpbahgC1
 	randIndex := rand.Intn(len(list))
 	return list[randIndex]
 }

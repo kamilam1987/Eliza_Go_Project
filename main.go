@@ -29,7 +29,7 @@ func main() {
 
 func HandleAsk(w http.ResponseWriter, r *http.Request) {
 	//Code adapted from: https://siongui.github.io/2017/03/24/go-get-url-query-string-in-http-handler/
-	userInput := r.URL.Query().Get("input") // extracts hello
+	userInput := r.URL.Query().Get("input")
 	reply := eliza.Ask(userInput)
 	fmt.Fprintf(w, reply)
 
