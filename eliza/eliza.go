@@ -54,6 +54,8 @@ var elizaStarts = []string{
 	"good morning",
 	"good evening",
 	"good afternoon",
+	"hi eliza",
+	"hello eliza",
 }
 
 //Function Respons uses paterns and array of answers

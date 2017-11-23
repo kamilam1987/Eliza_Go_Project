@@ -30,13 +30,19 @@ because (.*)
 Is that the real reason?;What other reasons come to mind?;Does that reason apply to anything else?;If %s, what else must be true?
 (sorry)
 You don't need to say sorry.;Why you are sorry?;Don't be sorry,; Fine; Don't worry.;There are many times when no apology is needed.;What feelings do you have when you apologize?
+(not good)
+Would like to talk about it?
+(good)
+That's fine.; Great, Would like to talk about anything else?;That's fine would you like to talk about it?
 i think (.*)
 Do you doubt %s?;Do you really think so?;But you're not sure %s?
-I feel (.*)
+(.*)\\bfeel\\b(.*)
 Good, tell me more about these feelings.;Do you often feel %s?;When do you usually feel %s?
 (.* )(friend)(.*)
 Tell me more about your friends.;When you think of a friend, what comes to mind?;Why don't you tell me about a childhood friend?
 (friend)
+Tell me more about your friends.;When you think of a friend, what comes to mind?;Why don't you tell me about a childhood friend?
+(.*)\\bfriend\\b(.*)
 Tell me more about your friends.;When you think of a friend, what comes to mind?;Why don't you tell me about a childhood friend?
 (yes)
 You seem quite sure.;OK, but can you elaborate a bit?
@@ -87,9 +93,7 @@ Really, %s ?;Surely not %s.;Can you think of anyone in particular ?;Who, for exa
 (always)
 Can you think of a specific example ?;When ?;What incident are you thinking of ?;Really, always ?
 (no)
-Why not?	
-(.*)\\?
-Why do you ask that?;Please consider whether you can answer your own question.;Perhaps the answer lies within yourself?;Why don't you tell me?
+Why not?
 (.*)
 Please tell me more.;Let's change focus a bit... Tell me about your family.;Can you elaborate on that?;Why do you say that, %s?;I see.;Very interesting.;%s.,I see.  And what does that tell you?;How does that make you feel?;How do you feel when you say that?
    
