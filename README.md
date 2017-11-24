@@ -16,7 +16,7 @@ https://github.com/processing/processing/wiki/Build-Instructions
 - Step 4: .\main.exe or go run .\main.go
 - Step 5: In browser type: http://localhost:8082 
 
-### References:
+### Project resource:
 Book:Introduction To Programming In Go Author: Caleb Doxsey<br />
 Book: Go Bootcamp Author: Matt Aimonetti<br />
 Book:Programming in Go Author: Mark Summerfield<br />
